@@ -1,0 +1,41 @@
+// In Memory Store of all their usernames. a Set? 
+// If username in set, username unavailable. 
+// Preety SImple. 
+
+---- (Gmail Usern in the Billions) - (In Memory?)
+
+// SQL? or something. 
+// A databse read operation. 
+// Inefective io - slow. 
+
+// Bloom Filter. 
+
+//                                                                              //
+//                                                                              //
+
+
+// Error rate 0.01 
+
+{frontend} -> enters a username -> {Post Request to Our Server} -> {Bloom FIlter} -> (Possibly in the set  [False Positives]) or Definitely not in the set. 
+    In the Set - > [Check the Databse {Username is available}]; 
+    Not In the Set -> [Tell the user they are good to go!] 
+
+// Read if we get "Possibly in Set" (Minizes reads.); 
+
+// - Node.js 
+// - Postman. 
+// - MongoDB. 
+    
+  "warrior_beta": Filter=true, Database=true
+  "quickwizard2k": Filter=true, Database=true
+  "hawk_2024": Filter=true, Database=true
+  "sharkmega": Filter=true, Database=true
+  "hawk_123": Filter=true, Database=true
+
+🎯 Testing potential false positives:
+  "nonexistent123": Filter=true, Database=false
+  🎯 False positive detected for "nonexistent123"
+  "fakeuserxyz": Filter=true, Database=false
+  🎯 False positive detected for "fakeuserxyz"
+  "notreal456": Filter=true, Database=false
+  🎯 False positive detected for "notreal456"
